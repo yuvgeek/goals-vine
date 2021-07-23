@@ -4,10 +4,10 @@
 
   <button
     *ngIf="userService.userInfoObs$ | async; else loginSignUpTemplate"
-    mat-icon-button
+    mat-button
     (click)="logout()"
   >
-    <mat-icon>logout</mat-icon>
+    <mat-icon class="mr-2">logout</mat-icon>LOGOUT
   </button>
 </mat-toolbar>
 

@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 type Clerk = ClerkBase & {
   load: (opts: { navigate: (to: string) => Promise<unknown> }) => Promise<void>;
@@ -38,6 +39,7 @@ declare global {
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatSnackBarModule,
   ],
   providers: [{ provide: Window, useValue: window }],
   bootstrap: [AppComponent],
