@@ -2,12 +2,8 @@
   <span (click)="navigateToHome()" class="cursor-pointer">{{ appName }}</span>
   <span class="spacer"></span>
 
-  <button
-    *ngIf="userService.userInfoObs$ | async"
-    mat-icon-button
-    aria-label="icon-button with heart icon"
-    (click)="logout()"
-  >
+  <button *ngIf="userService.userInfoObs$ | async" mat-icon-button aria-label="icon-button with heart icon"
+    (click)="logout()">
     <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
