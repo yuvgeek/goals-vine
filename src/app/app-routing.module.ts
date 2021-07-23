@@ -26,8 +26,13 @@ const routes: Routes = [
       },
       {
         path: 'profile',
-        component: ProfileComponent
-      }
+        component: ProfileComponent,
+      },
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+      },
     ],
   },
 ];
