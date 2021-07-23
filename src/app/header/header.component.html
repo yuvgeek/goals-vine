@@ -3,11 +3,15 @@
   <span class="spacer"></span>
 
   <button
-    *ngIf="userService.userInfoObs$ | async"
+    *ngIf="userService.userInfoObs$ | async; else loginSignUpTemplate"
     mat-icon-button
-    aria-label="icon-button with heart icon"
     (click)="logout()"
   >
     <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
+
+<ng-template #loginSignUpTemplate>
+  <button mat-button routerLink="login">LOGIN</button>
+  <button mat-button routerLink="register">REGISTER</button>
+</ng-template>

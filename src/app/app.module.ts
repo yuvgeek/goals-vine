@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MatButtonModule } from '@angular/material/button';
 
 type Clerk = ClerkBase & {
   load: (opts: { navigate: (to: string) => Promise<unknown> }) => Promise<void>;
@@ -36,6 +37,7 @@ declare global {
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
+    MatButtonModule,
   ],
   providers: [{ provide: Window, useValue: window }],
   bootstrap: [AppComponent],
