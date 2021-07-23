@@ -1,10 +1,11 @@
 <mat-toolbar color="primary">
   <span (click)="navigateToHome()" class="cursor-pointer">{{ appName }}</span>
   <span class="spacer"></span>
+
   <button
-    *ngIf="false"
+    *ngIf="userService.userInfoObs$ | async"
     mat-icon-button
-    aria-label="Example icon-button with heart icon"
+    aria-label="icon-button with heart icon"
     (click)="logout()"
   >
     <mat-icon>logout</mat-icon>

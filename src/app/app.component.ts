@@ -7,6 +7,5 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'ideas-vine';
   appName = environment.appName;
 }
