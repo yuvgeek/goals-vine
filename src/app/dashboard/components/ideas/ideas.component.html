@@ -1,1 +1,18 @@
-<p>ideas works!</p>
+<h1>Ideas</h1>
+<mat-divider></mat-divider>
+<div class="mt-2" cdkDropListGroup>
+  <div>
+    <h2>{{ "Todo" }}</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="todo"
+      class="d-flex flex-column idea-section bg-white mat-elevation-z6"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="idea-box" *ngFor="let item of todo" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+  </div>
+</div>

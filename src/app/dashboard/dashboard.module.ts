@@ -10,7 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { IdeasComponent } from './components/ideas/ideas.component';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [DashboardComponent, StatsComponent, IdeasComponent],
   imports: [
@@ -21,6 +21,7 @@ import { IdeasComponent } from './components/ideas/ideas.component';
     MatCardModule,
     MatDividerModule,
     MatIconModule,
+    DragDropModule,
   ],
 })
 export class DashboardModule {}
