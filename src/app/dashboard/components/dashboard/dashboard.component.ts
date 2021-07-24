@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent {
   sideNavItems = [
-    { label: 'Home', route: '' },
-    { label: 'Feed', route: 'feed' },
+    { label: 'Home', route: '/dashboardh', icon: 'home' },
+    { label: 'Ideas', route: 'ideas', icon: 'lightbulb' },
+    { label: 'Feed', route: 'feed', icon: 'feed' },
   ];
 }

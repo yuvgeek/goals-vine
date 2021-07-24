@@ -7,15 +7,20 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { StatsComponent } from './components/stats/stats.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { IdeasComponent } from './components/ideas/ideas.component';
 
 @NgModule({
-  declarations: [DashboardComponent, StatsComponent],
+  declarations: [DashboardComponent, StatsComponent, IdeasComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     MatSidenavModule,
     MatListModule,
     MatCardModule,
+    MatDividerModule,
+    MatIconModule,
   ],
 })
 export class DashboardModule {}
