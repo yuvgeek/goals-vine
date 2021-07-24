@@ -1,1 +1,15 @@
-<p>dashboard works!</p>
+<mat-sidenav-container class="d-flex h-100">
+  <mat-sidenav-content class="d-flex w-100">
+    <mat-nav-list class="nav-list mat-elevation-z6 bg-white pr-3">
+      <a
+        mat-list-item
+        [routerLink]="nav.route"
+        *ngFor="let nav of sideNavItems"
+        >{{ nav.label }}</a
+      >
+    </mat-nav-list>
+    <main class="p-3 w-100">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
