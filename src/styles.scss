@@ -14,3 +14,9 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.md-fab-bottom-right {
+  position: fixed !important;
+  right: 15px;
+  bottom: 15px;
+}

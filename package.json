@@ -22,7 +22,10 @@
     "@angular/platform-browser": "~12.1.2",
     "@angular/platform-browser-dynamic": "~12.1.2",
     "@angular/router": "~12.1.2",
+    "@ckeditor/ckeditor5-angular": "^2.0.2",
+    "@ckeditor/ckeditor5-build-classic": "^29.0.0",
     "@clerk/clerk-js": "^1.26.1",
+    "harperive": "^2.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

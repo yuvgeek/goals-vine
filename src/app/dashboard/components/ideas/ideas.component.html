@@ -2,7 +2,7 @@
 <mat-divider></mat-divider>
 <div class="mt-2" cdkDropListGroup>
   <div>
-    <h2>{{ "Todo" }}</h2>
+    <h2>{{ "Not Started" }}</h2>
 
     <div
       cdkDropList
@@ -16,3 +16,7 @@
     </div>
   </div>
 </div>
+
+<button mat-fab class="md-fab-bottom-right" color="accent" (click)="addIdea()">
+  <mat-icon>add</mat-icon>
+</button>
