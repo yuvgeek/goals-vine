@@ -2,6 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { AddIdea } from 'src/app/interfaces/ideas';
+import { IdeasService } from 'src/app/services/ideas.service';
 
 @Component({
   selector: 'app-idea-update',
@@ -42,7 +44,8 @@ export class IdeaUpdateComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { action: 'add' | 'update' },
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private ideasService: IdeasService
   ) {}
   ideaForm = this.fb.group({
     name: [null, Validators.required],
@@ -51,4 +54,11 @@ export class IdeaUpdateComponent {
     target: [null, Validators.required],
     visibility: ['public', Validators.required],
   });
+
+  createIdea() {
+    const formValues: AddIdea = this.ideaForm.value;
+    this.ideasService.addIdea(formValues).subscribe((res) => {
+      console.log(res);
+    });
+  }
 }

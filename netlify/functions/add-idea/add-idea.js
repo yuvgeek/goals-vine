@@ -13,18 +13,19 @@ const client = new Client(DB_CONFIG);
 
 const options = {
   operation: "insert",
+  schema: "ideasVine",
   table: "ideas",
-  records: [
-    {
-      name: "Hey",
-    },
-  ],
+  records: [],
 };
 
-const handler = async (event) => {
+const handler = async (req) => {
   try {
-    const res = await client.insert(options);
-    console.log(res);
+    const params = {
+      ...options,
+      records: [{ ...JSON.parse(req.body) }],
+    };
+    console.log(params);
+    const res = await client.insert(params);
     return {
       statusCode: 200,
       body: JSON.stringify(res),
