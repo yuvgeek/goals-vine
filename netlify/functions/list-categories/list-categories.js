@@ -1,13 +1,14 @@
 const { client } = require("../harperdb-connection");
-const options = {
-  table: "ideas",
-  searchAttribute: "visibility",
-  searchValue: "public",
-  attributes: ["*"],
-};
 
 const handler = async (req) => {
   try {
+    const params = req.queryStringParameters;
+    const options = {
+      table: "categories",
+      searchAttribute: "user_id",
+      searchValue: params.user_id,
+      attributes: ["*"],
+    };
     const res = await client.searchByValue(options);
     return {
       statusCode: 200,

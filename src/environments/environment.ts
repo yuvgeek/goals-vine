@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  appName: 'Idea Vine'
+  appName: 'Goals Vine',
 };
 
 /*

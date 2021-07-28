@@ -1,7 +1,7 @@
-<h1>Ideas</h1>
+<h1>Goals</h1>
 <mat-divider></mat-divider>
 <div class="d-flex justify-content-around" cdkDropListGroup>
-  <ng-container *ngFor="let group of ideas">
+  <ng-container *ngFor="let group of goals">
     <div class="mt-2">
       <div>
         <h2>{{ group.key | snakeCase }}</h2>
@@ -19,9 +19,12 @@
               class="mb-4 mat-elevation-z6"
               cdkDrag
             >
-              <div class="idea-box">
+              <div class="goal-box">
                 <h2 class="material-primary">{{ item.name }}</h2>
-                <p class="mb-4">{{ item.description }}</p>
+                <p class="mb-4">
+                  <span class="material-accent">Category </span>:
+                  {{ item.category_name }}
+                </p>
                 <div class="d-flex justify-content-between">
                   <div class="d-flex align-items-center">
                     <mat-icon>visibility</mat-icon>
@@ -39,13 +42,13 @@
           <ng-template #noItemTemplate>
             <div
               class="
-                idea-placeholder
+                goal-placeholder
                 d-flex
                 justify-content-center
                 align-items-center
               "
             >
-              Drop your goal here
+              No goal is available
             </div>
           </ng-template>
         </div>
@@ -54,6 +57,6 @@
   </ng-container>
 </div>
 
-<button mat-fab class="md-fab-bottom-right" color="accent" (click)="addIdea()">
+<button mat-fab class="md-fab-bottom-right" color="accent" (click)="addGoal()">
   <mat-icon>add</mat-icon>
 </button>

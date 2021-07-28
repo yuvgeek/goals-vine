@@ -3,8 +3,7 @@ const { client } = require("../harperdb-connection");
 
 const options = {
   operation: "insert",
-  schema: "ideasVine",
-  table: "ideas",
+  table: "goals",
   records: [],
 };
 

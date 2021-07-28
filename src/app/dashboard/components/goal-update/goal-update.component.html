@@ -1,16 +1,23 @@
-<h2 mat-dialog-title>{{ data.action === "add" ? "Add" : "Update" }} Idea</h2>
+<h2 mat-dialog-title>{{ data.action === "add" ? "Add" : "Update" }} Goal</h2>
 <mat-dialog-content class="mat-typography">
-  <form [formGroup]="ideaForm">
+  <form [formGroup]="goalForm">
     <mat-form-field class="w-100">
       <mat-label>Name</mat-label>
       <textarea matInput formControlName="name"></textarea>
-      <mat-hint>Give the name for the idea</mat-hint>
+      <mat-hint>Give the name for the goal</mat-hint>
     </mat-form-field>
 
     <mat-form-field class="my-3 d-block w-100">
-      <mat-label>Description</mat-label>
-      <textarea matInput formControlName="description"></textarea>
-      <mat-hint>Enter the description for the idea</mat-hint>
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category_id">
+        <mat-option
+          *ngFor="let status of categories$ | async"
+          [value]="status.id"
+        >
+          {{ status.name }}
+        </mat-option>
+      </mat-select>
+      <mat-hint>Select the category for the goal</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
@@ -49,8 +56,8 @@
     color="primary"
     [mat-dialog-close]="true"
     cdkFocusInitial
-    [disabled]="ideaForm.invalid"
-    (click)="createIdea()"
+    [disabled]="goalForm.invalid"
+    (click)="createGoal()"
   >
     CREATE
   </button>

@@ -4,7 +4,7 @@ const DB_CONFIG = {
   harperHost: process.env.DB_HOST,
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
-  schema: "ideasVine",
+  schema: "goalsVine",
 };
 
 const Client = harperive.Client;

@@ -8,11 +8,11 @@ import { StatsComponent } from './components/stats/stats.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { IdeasComponent } from './components/ideas/ideas.component';
+import { GoalsComponent } from './components/goals/goals.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { IdeaUpdateComponent } from './components/idea-update/idea-update.component';
+import { GoalUpdateComponent } from './components/goal-update/goal-update.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,8 +28,8 @@ import { SnakeCaseModule } from '../pipes/snake-case/snake-case.module';
   declarations: [
     DashboardComponent,
     StatsComponent,
-    IdeasComponent,
-    IdeaUpdateComponent,
+    GoalsComponent,
+    GoalUpdateComponent,
   ],
   imports: [
     CommonModule,
