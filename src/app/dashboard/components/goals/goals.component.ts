@@ -33,15 +33,15 @@ export class GoalsComponent implements OnInit {
       .subscribe((res) => {
         this.goals = [
           {
-            key: 'Not Started',
+            key: 'not_started',
             value: this.getDataByStatus(res, 'not_started'),
           },
           {
-            key: 'In Progress',
+            key: 'in_progress',
             value: this.getDataByStatus(res, 'in_progress'),
           },
           {
-            key: 'Completed',
+            key: 'completed',
             value: this.getDataByStatus(res, 'completed'),
           },
         ];
@@ -56,7 +56,7 @@ export class GoalsComponent implements OnInit {
     });
   }
 
-  drop(event: CdkDragDrop<Goal[]>) {
+  drop(event: CdkDragDrop<Goal[]>, status: string) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -64,6 +64,11 @@ export class GoalsComponent implements OnInit {
         event.currentIndex
       );
     } else {
+      this.updateGoalStatusOnDrop(
+        event.previousIndex,
+        event.previousContainer.data,
+        status
+      );
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
@@ -71,6 +76,15 @@ export class GoalsComponent implements OnInit {
         event.currentIndex
       );
     }
+  }
+
+  updateGoalStatusOnDrop(prevIndex: number, data: Goal[], status: string) {
+    const item = data[prevIndex];
+    item.status = status;
+    console.log(item);
+    this.goalsService
+      .updateGoalStatus(window.Clerk.user?.id as string, item.id, status)
+      .subscribe();
   }
 
   getDataByStatus(res: Goal[], status: string) {

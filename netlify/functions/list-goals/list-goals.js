@@ -10,14 +10,12 @@ const handler = async (req) => {
       "WHERE goal.user_id='" +
       params.user_id +
       "'";
-    console.log(options);
     const res = await client.query(options);
     return {
       statusCode: 200,
       body: JSON.stringify(res),
     };
   } catch (error) {
-    console.log(error);
     return { statusCode: 500, body: error.toString() };
   }
 };

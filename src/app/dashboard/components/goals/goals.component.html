@@ -11,7 +11,8 @@
           [id]="group.key"
           class="d-flex flex-column"
           [cdkDropListData]="group.value"
-          (cdkDropListDropped)="drop($event)"
+          cdkDropListSortingDisabled
+          (cdkDropListDropped)="drop($event, group.key)"
         >
           <ng-container *ngIf="group?.value?.length; else noItemTemplate">
             <div

@@ -22,4 +22,12 @@ export class GoalsService {
       .get('.netlify/functions/list-goals', { params: { user_id } })
       .pipe(map((res: any) => res.data));
   }
+
+  updateGoalStatus(user_id: string, goal_id: string, status: string) {
+    return this.http.post('.netlify/functions/update-goal-status', {
+      user_id,
+      id: goal_id,
+      status,
+    });
+  }
 }

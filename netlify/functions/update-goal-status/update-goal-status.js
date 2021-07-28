@@ -1,7 +1,7 @@
 const { client } = require("../harperdb-connection");
 
 const options = {
-  operation: "insert",
+    operation: "update",
   table: "goals",
   records: [],
 };
@@ -12,8 +12,7 @@ const handler = async (req) => {
       ...options,
       records: [{ ...JSON.parse(req.body) }],
     };
-    console.log(params);
-    const res = await client.insert(params);
+    const res = await client.update(params);
     return {
       statusCode: 200,
       body: JSON.stringify(res),
