@@ -1,18 +1,16 @@
-<mat-sidenav-container class="d-flex h-100">
-  <mat-sidenav-content class="d-flex w-100">
-    <mat-nav-list class="nav-list mat-elevation-z6 bg-white">
-      <a
-        mat-list-item
-        [routerLink]="nav.route"
-        routerLinkActive="navActive"
-        *ngFor="let nav of sideNavItems"
-      >
-        <mat-icon class="mr-2">{{ nav.icon }}</mat-icon
-        >{{ nav.label }}</a
-      >
-    </mat-nav-list>
-    <main class="p-3 w-100">
-      <router-outlet></router-outlet>
-    </main>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="dashboard">
+  <h2 class="pb-3">Dashboard</h2>
+  <section class="d-flex justify-content-around">
+    <div class="stat" *ngFor="let stat of stats">
+      <mat-card class="card-status mr-2 mat-elevation-z8">
+        <mat-card-header>
+          <mat-card-title>{{ stat.label }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <!-- <div></div> -->
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+  <mat-divider class="my-5"></mat-divider>
+</div>

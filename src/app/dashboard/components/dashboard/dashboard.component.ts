@@ -5,11 +5,22 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {
-  sideNavItems = [
-    { label: 'Home', route: '/dashboardh', icon: 'home' },
-    { label: 'Goals', route: 'goals', icon: 'lightbulb' },
-    { label: 'Feed', route: 'feed', icon: 'feed' },
-    { label: 'Categories', route: 'categories', icon: 'categories' },
-  ];
+export class DashboardComponent implements OnInit {
+  stats: any[] = [];
+
+  constructor() {}
+
+  ngOnInit(): void {
+    this.stats = [
+      {
+        label: 'Not Started',
+      },
+      {
+        label: 'In Progress',
+      },
+      {
+        label: 'Completed',
+      },
+    ];
+  }
 }

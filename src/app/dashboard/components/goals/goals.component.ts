@@ -22,6 +22,7 @@ export class GoalsComponent implements OnInit {
   constructor(public dialog: MatDialog, public goalsService: GoalsService) {}
   todo = [];
   goals!: { key: string; value: Goal[] }[];
+  isLoading: boolean = true;
 
   ngOnInit() {
     this.goalsService.refreshGoals$
@@ -45,6 +46,7 @@ export class GoalsComponent implements OnInit {
             value: this.getDataByStatus(res, 'completed'),
           },
         ];
+        this.isLoading = false;
       });
   }
 

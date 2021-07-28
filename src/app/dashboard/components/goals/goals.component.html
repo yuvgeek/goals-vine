@@ -61,3 +61,7 @@
 <button mat-fab class="md-fab-bottom-right" color="accent" (click)="addGoal()">
   <mat-icon>add</mat-icon>
 </button>
+
+<div *ngIf="isLoading">
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</div>

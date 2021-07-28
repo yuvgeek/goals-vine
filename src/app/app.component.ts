@@ -8,4 +8,11 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
   appName = environment.appName;
+
+  sideNavItems = [
+    { label: 'Dashboard', route: '/dashboard', icon: 'dashboard' },
+    { label: 'Goals', route: 'goals', icon: 'flag' },
+    { label: 'Feed', route: 'feed', icon: 'feed' },
+    { label: 'Categories', route: '/categories', icon: 'category' },
+  ];
 }
