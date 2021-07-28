@@ -2,7 +2,10 @@
 
 <mat-sidenav-container class="d-flex h-100">
   <mat-sidenav-content class="d-flex w-100">
-    <mat-nav-list class="nav-list mat-elevation-z6 bg-white">
+    <mat-nav-list
+      class="nav-list mat-elevation-z6 bg-white"
+      *ngIf="userService.userInfoObs$ | async"
+    >
       <a
         mat-list-item
         [routerLink]="nav.route"

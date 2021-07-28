@@ -1,14 +1,15 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
   <span (click)="navigateToHome()" class="cursor-pointer">{{ appName }}</span>
   <span class="spacer"></span>
+  <div id="userAction" class="userAction" #userAction></div>
 
-  <button
+  <ng-container
     *ngIf="userService.userInfoObs$ | async; else loginSignUpTemplate"
-    mat-button
-    (click)="logout()"
   >
-    <mat-icon class="mr-2">logout</mat-icon>LOGOUT
-  </button>
+    <button mat-button (click)="logout()">
+      <mat-icon class="mr-2">logout</mat-icon>LOGOUT
+    </button>
+  </ng-container>
 </mat-toolbar>
 
 <ng-template #loginSignUpTemplate>
