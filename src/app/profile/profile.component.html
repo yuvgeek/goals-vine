@@ -1,4 +1,20 @@
-<section class="profileContainer">
-    <div #profileContainer></div>
+<ng-container *ngIf="userInfo$ | async as userInfo">
+  <section>
+    <div class="d-flex flex-column align-items-center">
+      <img
+        [src]="userInfo.data.profile_image_url"
+        width="200px"
+        height="200px"
+        class="rounded-circle"
+      />
+
+      <h2 class="mt-2">
+        {{ userInfo.data.first_name + " " + userInfo.data.last_name }}
+      </h2>
+    </div>
+    <mat-tab-group mat-align-tabs="center" animationDuration="1000ms">
+      <mat-tab label="Following">Following list here</mat-tab>
+      <mat-tab label="Followers">Followers list here</mat-tab>
+    </mat-tab-group>
   </section>
-  
+</ng-container>

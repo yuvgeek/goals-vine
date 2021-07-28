@@ -14,10 +14,11 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialSharedModule } from './material-shared/material-shared.module';
 import { SnakeCaseModule } from './pipes/snake-case/snake-case.module';
-import { ProfileComponent } from './profile/profile.component';
+import { AccountComponent } from './account/account.component';
 import { RegisterComponent } from './register/register.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
+import { ProfileComponent } from './profile/profile.component';
 
 type Clerk = ClerkBase & {
   load: (opts: { navigate: (to: string) => Promise<unknown> }) => Promise<void>;
@@ -35,12 +36,13 @@ declare global {
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent,
+    AccountComponent,
     GoalsComponent,
     GoalUpdateComponent,
     DashboardComponent,
     CategoriesComponent,
     UpdateCategoryComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

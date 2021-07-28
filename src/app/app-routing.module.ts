@@ -5,9 +5,10 @@ import { DashboardComponent } from './dashboard/components/dashboard/dashboard.c
 import { GoalsComponent } from './dashboard/components/goals/goals.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
+import { AccountComponent } from './account/account.component';
 import { RegisterComponent } from './register/register.component';
 import { ClerkResolver } from './resolver/clerk.resolver';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -28,8 +29,8 @@ const routes: Routes = [
         component: RegisterComponent,
       },
       {
-        path: 'profile',
-        component: ProfileComponent,
+        path: 'account',
+        component: AccountComponent,
       },
       {
         path: 'dashboard',
@@ -42,6 +43,10 @@ const routes: Routes = [
       {
         path: 'categories',
         component: CategoriesComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
       },
     ],
   },

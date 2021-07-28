@@ -1,24 +1,19 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef, ViewChild
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UserService } from '../services/user.service';
+import type { UserResource } from '@clerk/types';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements AfterViewInit {
-  @ViewChild('profileContainer', { static: false }) private profileContainer:
-    | ElementRef<HTMLDivElement>
-    | undefined;
+export class ProfileComponent implements OnInit {
+  userInfo$ = new Observable<UserResource | null | undefined>();
+  constructor(private userService: UserService) {}
 
-  ngAfterViewInit(): void {
-    const el = this.profileContainer?.nativeElement;
-    if (!el) {
-      return;
-    }
-    window.Clerk.mountUserProfile(el);
+  ngOnInit(): void {
+    this.userInfo$ = this.userService.userInfo$.pipe(filter((data) => !!data));
   }
 }

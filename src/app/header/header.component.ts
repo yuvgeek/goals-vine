@@ -39,9 +39,7 @@ export class HeaderComponent implements AfterViewInit {
 
         const el = this.userActionContainer?.nativeElement as HTMLDivElement;
 
-        setTimeout(() => {
-          window.Clerk.mountUserButton(el);
-        }, 2000);
+        window.Clerk.mountUserButton(el);
       });
   }
 

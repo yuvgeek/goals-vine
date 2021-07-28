@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
     { label: 'Goals', route: 'goals', icon: 'flag' },
     { label: 'Feed', route: 'feed', icon: 'feed' },
     { label: 'Categories', route: '/categories', icon: 'category' },
+    { label: 'Account', route: '/account', icon: 'account_circle' },
+    { label: 'Profile', route: '/profile', icon: 'person' },
   ];
 
   isLoading: boolean = true;
