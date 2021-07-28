@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "compodoc": "compodoc -p tsconfig.doc.json"
+    "compodoc": "compodoc -p tsconfig.doc.json",
+    "start-pwa": "ng build --prod && http-server -p 8080 -c-1 dist/goals-vine"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,7 @@
     "@angular/platform-browser": "~12.1.2",
     "@angular/platform-browser-dynamic": "~12.1.2",
     "@angular/router": "~12.1.2",
+    "@angular/service-worker": "~12.1.2",
     "@ckeditor/ckeditor5-angular": "^2.0.2",
     "@ckeditor/ckeditor5-build-classic": "^29.0.0",
     "@clerk/clerk-js": "^1.26.1",
