@@ -1,20 +1,57 @@
 <h1>Ideas</h1>
 <mat-divider></mat-divider>
-<div class="mt-2" cdkDropListGroup>
-  <div>
-    <h2>{{ "Not Started" }}</h2>
+<div class="d-flex justify-content-around" cdkDropListGroup>
+  <ng-container *ngFor="let group of ideas">
+    <div class="mt-2">
+      <div>
+        <h2>{{ group.key | snakeCase }}</h2>
 
-    <div
-      cdkDropList
-      [cdkDropListData]="todo"
-      class="d-flex flex-column idea-section bg-white mat-elevation-z6"
-      (cdkDropListDropped)="drop($event)"
-    >
-      <div class="idea-box" *ngFor="let item of todo" cdkDrag>
-        {{ item }}
+        <div
+          cdkDropList
+          [id]="group.key"
+          class="d-flex flex-column"
+          [cdkDropListData]="group.value"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <ng-container *ngIf="group?.value?.length; else noItemTemplate">
+            <div
+              *ngFor="let item of group.value"
+              class="mb-4 mat-elevation-z6"
+              cdkDrag
+            >
+              <div class="idea-box">
+                <h2 class="material-primary">{{ item.name }}</h2>
+                <p class="mb-4">{{ item.description }}</p>
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <mat-icon>visibility</mat-icon>
+                    <span class="ml-1">{{ item.visibility | titlecase }}</span>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <mat-icon>schedule</mat-icon>
+                    <span class="ml-1">{{ item.target | date }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-template #noItemTemplate>
+            <div
+              class="
+                idea-placeholder
+                d-flex
+                justify-content-center
+                align-items-center
+              "
+            >
+              Drop your goal here
+            </div>
+          </ng-template>
+        </div>
       </div>
     </div>
-  </div>
+  </ng-container>
 </div>
 
 <button mat-fab class="md-fab-bottom-right" color="accent" (click)="addIdea()">

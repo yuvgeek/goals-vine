@@ -1,21 +1,14 @@
-// Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 const { client } = require("../harperdb-connection");
-
 const options = {
-  operation: "insert",
-  schema: "ideasVine",
   table: "ideas",
-  records: [],
+  searchAttribute: "visibility",
+  searchValue: "public",
+  attributes: ["*"],
 };
 
 const handler = async (req) => {
   try {
-    const params = {
-      ...options,
-      records: [{ ...JSON.parse(req.body) }],
-    };
-    console.log(params);
-    const res = await client.insert(params);
+    const res = await client.searchByValue(options);
     return {
       statusCode: 200,
       body: JSON.stringify(res),
@@ -24,5 +17,4 @@ const handler = async (req) => {
     return { statusCode: 500, body: error.toString() };
   }
 };
-
 module.exports = { handler };

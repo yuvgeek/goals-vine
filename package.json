@@ -26,6 +26,7 @@
     "@ckeditor/ckeditor5-build-classic": "^29.0.0",
     "@clerk/clerk-js": "^1.26.1",
     "harperive": "^2.0.1",
+    "lodash": "^4.17.21",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
@@ -41,6 +42,7 @@
     "@angular/compiler-cli": "~12.1.2",
     "@compodoc/compodoc": "^1.1.14",
     "@types/jasmine": "~3.8.0",
+    "@types/lodash": "^4.14.171",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "4.28.2",
     "@typescript-eslint/parser": "4.28.2",

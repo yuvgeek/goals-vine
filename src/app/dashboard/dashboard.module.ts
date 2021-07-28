@@ -22,6 +22,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
+import { SnakeCaseModule } from '../pipes/snake-case/snake-case.module';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatNativeDateModule,
     MatSelectModule,
     HttpClientModule,
+    SnakeCaseModule,
   ],
 })
 export class DashboardModule {}
