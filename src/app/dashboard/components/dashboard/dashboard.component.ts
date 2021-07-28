@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Goal } from 'src/app/interfaces/goals';
 import { GoalsService } from 'src/app/services/goals.service';
 
@@ -11,6 +11,7 @@ import { GoalsService } from 'src/app/services/goals.service';
 })
 export class DashboardComponent implements OnInit {
   stats$!: Observable<{ key: string; value: number }[]>;
+  isLoading: boolean = true;
 
   constructor(private goalsService: GoalsService) {}
 
@@ -33,7 +34,8 @@ export class DashboardComponent implements OnInit {
               value: this.getDataByStatus(res, 'completed')?.length,
             },
           ];
-        })
+        }),
+        tap(() => (this.isLoading = false))
       );
   }
 

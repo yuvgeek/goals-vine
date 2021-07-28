@@ -1,6 +1,6 @@
 <h1>Goals</h1>
 <p>The place where your goals will become reality!</p>
-<mat-divider></mat-divider>
+<mat-divider *ngIf="!isLoading"></mat-divider>
 <div class="mt-3 d-flex justify-content-around" cdkDropListGroup>
   <ng-container *ngFor="let group of goals">
     <div class="mt-2">

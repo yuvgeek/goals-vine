@@ -18,5 +18,8 @@
       </mat-card>
     </div>
   </section>
-  <mat-divider class="my-5"></mat-divider>
+</div>
+
+<div *ngIf="isLoading">
+  <mat-progress-bar mode="query"></mat-progress-bar>
 </div>
