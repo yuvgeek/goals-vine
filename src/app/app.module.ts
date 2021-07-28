@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TitleCasePipe } from '@angular/common';
 
 type Clerk = ClerkBase & {
   load: (opts: { navigate: (to: string) => Promise<unknown> }) => Promise<void>;
@@ -53,7 +54,7 @@ declare global {
     SnakeCaseModule,
     ReactiveFormsModule,
   ],
-  providers: [{ provide: Window, useValue: window }],
+  providers: [{ provide: Window, useValue: window }, TitleCasePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

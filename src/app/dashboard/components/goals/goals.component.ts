@@ -6,8 +6,6 @@ import {
 import { TitleCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import groupBy from 'lodash/groupBy';
-import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Goal } from 'src/app/interfaces/goals';
 import { GoalsService } from 'src/app/services/goals.service';

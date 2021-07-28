@@ -1,13 +1,19 @@
 <div class="dashboard">
   <h2 class="pb-3">Dashboard</h2>
   <section class="d-flex justify-content-around">
-    <div class="stat" *ngFor="let stat of stats">
+    <div class="stat" *ngFor="let stat of stats$ | async">
       <mat-card class="card-status mr-2 mat-elevation-z8">
         <mat-card-header>
-          <mat-card-title>{{ stat.label }}</mat-card-title>
+          <mat-card-title
+            >{{ stat.key | snakeCase }} ({{ stat.value }})</mat-card-title
+          >
         </mat-card-header>
         <mat-card-content>
-          <!-- <div></div> -->
+          <mat-divider></mat-divider>
+
+          <div class="ml-3 pt-3">
+            <p>There are {{ stat.value }} goals available in this section</p>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>

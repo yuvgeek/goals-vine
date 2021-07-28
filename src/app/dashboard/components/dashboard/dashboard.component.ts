@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Goal } from 'src/app/interfaces/goals';
+import { GoalsService } from 'src/app/services/goals.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,21 +10,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  stats: any[] = [];
+  stats$!: Observable<{ key: string; value: number }[]>;
 
-  constructor() {}
+  constructor(private goalsService: GoalsService) {}
 
   ngOnInit(): void {
-    this.stats = [
-      {
-        label: 'Not Started',
-      },
-      {
-        label: 'In Progress',
-      },
-      {
-        label: 'Completed',
-      },
-    ];
+    this.stats$ = this.goalsService
+      .getGoals(window.Clerk?.user?.id as string)
+      .pipe(
+        map((res): { key: string; value: number }[] => {
+          return [
+            {
+              key: 'not_started',
+              value: this.getDataByStatus(res, 'not_started')?.length,
+            },
+            {
+              key: 'in_progress',
+              value: this.getDataByStatus(res, 'in_progress')?.length,
+            },
+            {
+              key: 'completed',
+              value: this.getDataByStatus(res, 'completed')?.length,
+            },
+          ];
+        })
+      );
+  }
+
+  getDataByStatus(res: Goal[], status: string) {
+    return res?.filter((item) => item.status === status);
   }
 }
