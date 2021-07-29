@@ -48,12 +48,13 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   logout() {
-    window.Clerk.signOut();
-    this.userService.userInfo$.next(null);
-    this._snackBar.open('You have been signed out', undefined, {
-      duration: 2000,
-      horizontalPosition: 'end',
+    window.Clerk.signOut().then(() => {
+      this.userService.userInfo$.next(null);
+      this._snackBar.open('You have been signed out', undefined, {
+        duration: 2000,
+        horizontalPosition: 'end',
+      });
+      this.router.navigate(['']);
     });
-    this.router.navigate(['']);
   }
 }
