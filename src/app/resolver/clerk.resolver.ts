@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   Resolve,
-  RouterStateSnapshot
+  RouterStateSnapshot,
 } from '@angular/router';
 import type { UserResource } from '@clerk/types';
 import { fromEvent, Observable } from 'rxjs';
@@ -16,16 +16,14 @@ export class ClerkResolver implements Resolve<boolean> {
   constructor(private userService: UserService) {}
 
   resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    route?: ActivatedRouteSnapshot,
+    state?: RouterStateSnapshot
   ): Observable<any> {
     const script = this.loadClerkJS();
     return fromEvent(script, 'load').pipe(
       take(1),
       concatMap(() => (window as any).Clerk.load()),
-      tap(() =>
-        this.userService.userInfo$.next(window.Clerk.user)
-      )
+      tap(() => this.userService.userInfo$.next(window.Clerk.user))
     );
   }
 

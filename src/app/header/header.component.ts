@@ -54,5 +54,6 @@ export class HeaderComponent implements AfterViewInit {
       duration: 2000,
       horizontalPosition: 'end',
     });
+    this.router.navigate(['']);
   }
 }

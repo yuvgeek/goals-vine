@@ -9,46 +9,57 @@ import { AccountComponent } from './account/account.component';
 import { RegisterComponent } from './register/register.component';
 import { ClerkResolver } from './resolver/clerk.resolver';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './guards/auth.guard';
+import { LoginGuardGuard } from './guards/login-guard.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    resolve: { clerk: ClerkResolver },
+    // resolve: { clerk: ClerkResolver },
+    canActivate: [LoginGuardGuard],
   },
   {
-    path: '',
-    resolve: { clerk: ClerkResolver },
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent,
-      },
-      {
-        path: 'register',
-        component: RegisterComponent,
-      },
-      {
-        path: 'account',
-        component: AccountComponent,
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-      },
-      {
-        path: 'goals',
-        component: GoalsComponent,
-      },
-      {
-        path: 'categories',
-        component: CategoriesComponent,
-      },
-      {
-        path: 'profile',
-        component: ProfileComponent,
-      },
-    ],
+    path: 'login',
+    component: LoginComponent,
+    // resolve: { clerk: ClerkResolver },
+    canActivate: [LoginGuardGuard],
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    // resolve: { clerk: ClerkResolver },
+    canActivate: [LoginGuardGuard],
+  },
+  {
+    path: 'account',
+    component: AccountComponent,
+    // resolve: { clerk: ClerkResolver },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    // resolve: { clerk: ClerkResolver },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'goals',
+    component: GoalsComponent,
+    // resolve: { clerk: ClerkResolver },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent,
+    // resolve: { clerk: ClerkResolver },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    // resolve: { clerk: ClerkResolver },
+    canActivate: [AuthGuard],
   },
 ];
 
