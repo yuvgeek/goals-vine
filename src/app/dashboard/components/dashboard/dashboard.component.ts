@@ -1,42 +1,79 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ChartType } from 'angular-google-charts';
+import { groupBy } from 'lodash';
+import { combineLatest, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { Categories } from 'src/app/interfaces/categories';
 import { Goal } from 'src/app/interfaces/goals';
 import { GoalsService } from 'src/app/services/goals.service';
 
+interface GoalsStats {
+  key: string;
+  value: number;
+}
+
+interface CategoryStats {
+  [key: string]: Categories[];
+}
+
+type ChartData = (string | number)[][];
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  stats$!: Observable<{ key: string; value: number }[]>;
+  stats$: Observable<{ goalsStats: GoalsStats[]; chartData: ChartData }> =
+    new Observable<{
+      goalsStats: GoalsStats[];
+      chartData: ChartData;
+    }>();
   isLoading: boolean = true;
+
+  chartType = ChartType.PieChart;
+  chartWidth: number = 600;
+  chartHeight: number = 300;
 
   constructor(private goalsService: GoalsService) {}
 
   ngOnInit(): void {
-    this.stats$ = this.goalsService
-      .getGoals(window.Clerk?.user?.id as string)
-      .pipe(
-        map((res): { key: string; value: number }[] => {
-          return [
+    const userId = window.Clerk?.user?.id as string;
+    this.stats$ = combineLatest([this.goalsService.getGoals(userId)]).pipe(
+      map(
+        ([goalsRes]): {
+          goalsStats: GoalsStats[];
+          chartData: ChartData;
+        } => {
+          const goalsStats: GoalsStats[] = [
             {
               key: 'not_started',
-              value: this.getDataByStatus(res, 'not_started')?.length,
+              value: this.getDataByStatus(goalsRes, 'not_started')?.length,
             },
             {
               key: 'in_progress',
-              value: this.getDataByStatus(res, 'in_progress')?.length,
+              value: this.getDataByStatus(goalsRes, 'in_progress')?.length,
             },
             {
               key: 'completed',
-              value: this.getDataByStatus(res, 'completed')?.length,
+              value: this.getDataByStatus(goalsRes, 'completed')?.length,
             },
           ];
-        }),
-        tap(() => (this.isLoading = false))
-      );
+          const groupedResult: CategoryStats = groupBy(
+            goalsRes,
+            'category_name'
+          );
+
+          const chartData: ChartData = [];
+
+          for (const [key, value] of Object.entries(groupedResult)) {
+            chartData.push([key, value.length]);
+          }
+
+          return { goalsStats, chartData };
+        }
+      ),
+      tap(() => (this.isLoading = false))
+    );
   }
 
   getDataByStatus(res: Goal[], status: string) {

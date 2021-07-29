@@ -27,6 +27,7 @@
     "@ckeditor/ckeditor5-angular": "^2.0.2",
     "@ckeditor/ckeditor5-build-classic": "^29.0.0",
     "@clerk/clerk-js": "^1.26.1",
+    "angular-google-charts": "^2.2.2",
     "harperive": "^2.0.1",
     "lodash": "^4.17.21",
     "rxjs": "~6.6.0",

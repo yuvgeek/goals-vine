@@ -22,6 +22,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { TitleCasePipe } from '@angular/common';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 type Clerk = ClerkBase & {
   load: (opts: { navigate: (to: string) => Promise<unknown> }) => Promise<void>;
@@ -55,6 +56,7 @@ declare global {
     MaterialSharedModule,
     SnakeCaseModule,
     ReactiveFormsModule,
+    GoogleChartsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
