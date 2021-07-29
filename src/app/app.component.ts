@@ -14,9 +14,9 @@ export class AppComponent implements OnInit {
   sideNavItems = [
     { label: 'Dashboard', route: '/dashboard', icon: 'dashboard' },
     { label: 'Goals', route: 'goals', icon: 'flag' },
-    { label: 'Activity', route: 'activity', icon: 'feed' },
     { label: 'Categories', route: '/categories', icon: 'category' },
     { label: 'Account', route: '/account', icon: 'account_circle' },
+    { label: 'Activity', route: 'activity', icon: 'feed' },
     // { label: 'Profile', route: '/profile', icon: 'person' }, - It is now in backlog. To be introduced later release
   ];
 

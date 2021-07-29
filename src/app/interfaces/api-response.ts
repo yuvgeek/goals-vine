@@ -1,4 +1,4 @@
-export interface ClerkAPIInsertResponse {
+export interface ClerkAPIUpsertResponse {
   statusCode: string;
   status: string;
   operation: string;
@@ -7,6 +7,19 @@ export interface ClerkAPIInsertResponse {
 
 export interface Data {
   message: string;
-  inserted_hashes: string[];
+  upserted_hashes: string[];
+  skipped_hashes: any[];
+}
+
+export interface ClerkAPIDeleteResponse {
+  statusCode: string;
+  status: string;
+  operation: string;
+  data: DeleteData;
+}
+
+export interface DeleteData {
+  message: string;
+  deleted_hashes: string[];
   skipped_hashes: any[];
 }

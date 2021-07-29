@@ -53,12 +53,20 @@
   <button mat-button mat-dialog-close>CANCEL</button>
   <button
     mat-button
+    mat-dialog-close
+    *ngIf="data.action === 'update'"
+    (click)="deleteGoal()"
+  >
+    DELETE
+  </button>
+  <button
+    mat-button
     color="primary"
     [mat-dialog-close]="true"
     cdkFocusInitial
     [disabled]="goalForm.invalid"
-    (click)="createGoal()"
+    (click)="saveGoal()"
   >
-    CREATE
+    SAVE
   </button>
 </mat-dialog-actions>

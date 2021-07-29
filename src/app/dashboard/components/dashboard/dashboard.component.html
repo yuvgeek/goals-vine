@@ -27,13 +27,29 @@
       <mat-divider></mat-divider>
       <h2 class="my-4">{{ "Goals by categories" | uppercase }}</h2>
 
-      <google-chart
-        [width]="chartWidth"
-        [height]="chartHeight"
-        [type]="chartType"
-        [data]="stats.chartData"
-      >
-      </google-chart>
+      <section class="d-flex flex-column">
+        <google-chart
+          *ngIf="stats.chartData.length > 0; else noDataChart"
+          style="width: 100%"
+          [height]="goalsByCategoryPieChart.chartHeight"
+          [type]="goalsByCategoryPieChart.chartType"
+          [data]="stats.chartData"
+        >
+        </google-chart>
+
+        <h2 class="my-4">{{ "Goals by Month" | uppercase }}</h2>
+
+        <google-chart
+          *ngIf="stats.columnChartData.length > 0; else noDataChart"
+          style="width: 100%"
+          [type]="goalsByMonthChart.chartType"
+          [data]="stats.columnChartData"
+        >
+        </google-chart>
+      </section>
+      <ng-template #noDataChart>
+        <h2 class="chart-no-data">Please add your goals to see the charts!</h2>
+      </ng-template>
     </section>
   </ng-container>
 </div>

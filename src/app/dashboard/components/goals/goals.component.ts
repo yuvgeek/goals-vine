@@ -6,7 +6,7 @@ import {
 import { TitleCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { Goal } from 'src/app/interfaces/goals';
 import { GoalsService } from 'src/app/services/goals.service';
 import { GoalUpdateComponent } from '../goal-update/goal-update.component';
@@ -25,6 +25,9 @@ export class GoalsComponent implements OnInit {
   ngOnInit() {
     this.goalsService.refreshGoals$
       .pipe(
+        tap(() => {
+          this.isLoading = true;
+        }),
         switchMap(() =>
           this.goalsService.getGoals(window.Clerk?.user?.id as string)
         )
@@ -49,9 +52,20 @@ export class GoalsComponent implements OnInit {
   }
 
   addGoal(): void {
-    const dialogRef = this.dialog.open(GoalUpdateComponent, {
+    this.dialog.open(GoalUpdateComponent, {
       data: {
         action: 'add',
+      },
+    });
+  }
+
+  updateGoal(selectedGoal: Goal): void {
+    console.log(selectedGoal);
+
+    this.dialog.open(GoalUpdateComponent, {
+      data: {
+        action: 'update',
+        selectedGoal,
       },
     });
   }

@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { delay, filter } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -30,10 +30,7 @@ export class HeaderComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.userService.userInfoObs$
-      .pipe(
-        filter((res) => !!res),
-        delay(2000)
-      )
+      .pipe(filter((res) => !!res))
       .subscribe((res) => {
         console.log(res);
 

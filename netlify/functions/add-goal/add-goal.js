@@ -13,7 +13,7 @@ const handler = async (req) => {
       records: [{ ...JSON.parse(req.body) }],
     };
     console.log(params);
-    const res = await client.insert(params);
+    const res = await client.upsert(params);
     return {
       statusCode: 200,
       body: JSON.stringify(res),

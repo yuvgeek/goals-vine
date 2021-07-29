@@ -1,6 +1,9 @@
 <h1>Goals</h1>
 <p>The place where your goals will become reality!</p>
 <mat-divider *ngIf="!isLoading"></mat-divider>
+<div *ngIf="isLoading">
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
 <div class="mt-3 d-flex justify-content-around" cdkDropListGroup>
   <ng-container *ngFor="let group of goals">
     <div class="mt-2">
@@ -21,7 +24,7 @@
               class="mb-4 mat-elevation-z6"
               cdkDrag
             >
-              <div class="goal-box">
+              <div class="goal-box" (click)="updateGoal(item)">
                 <h2 class="material-primary cursor-pointer">{{ item.name }}</h2>
                 <p class="mb-4">
                   <span class="material-accent-">Category </span>:
@@ -62,7 +65,3 @@
 <button mat-fab class="md-fab-bottom-right" color="accent" (click)="addGoal()">
   <mat-icon>add</mat-icon>
 </button>
-
-<div *ngIf="isLoading">
-  <mat-progress-bar mode="query"></mat-progress-bar>
-</div>
