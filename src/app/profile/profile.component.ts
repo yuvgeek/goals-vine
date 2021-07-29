@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { UserService } from '../services/user.service';
 import type { UserResource } from '@clerk/types';
 import { filter } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -11,9 +12,17 @@ import { filter } from 'rxjs/operators';
 })
 export class ProfileComponent implements OnInit {
   userInfo$ = new Observable<UserResource | null | undefined>();
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.userInfo$ = this.userService.userInfo$.pipe(filter((data) => !!data));
+    this.userInfo$ = this.userService.userInfoObs$.pipe(
+      filter((data) => !!data)
+    );
+
+    const { userId } = this.activatedRoute.snapshot.params;
+    console.log(userId);
   }
 }

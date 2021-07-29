@@ -14,10 +14,10 @@ export class AppComponent implements OnInit {
   sideNavItems = [
     { label: 'Dashboard', route: '/dashboard', icon: 'dashboard' },
     { label: 'Goals', route: 'goals', icon: 'flag' },
-    { label: 'Feed', route: 'feed', icon: 'feed' },
+    { label: 'Activity', route: 'activity', icon: 'feed' },
     { label: 'Categories', route: '/categories', icon: 'category' },
     { label: 'Account', route: '/account', icon: 'account_circle' },
-    { label: 'Profile', route: '/profile', icon: 'person' },
+    // { label: 'Profile', route: '/profile', icon: 'person' }, - It is now in backlog. To be introduced later release
   ];
 
   isLoading: boolean = true;
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   constructor(public userService: UserService) {}
 
   ngOnInit() {
-    this.userService.userInfoObs$.pipe().subscribe(() => {
+    this.userService.userInfoObs$.subscribe((user) => {
       this.isLoading = false;
     });
   }

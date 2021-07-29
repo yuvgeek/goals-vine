@@ -11,6 +11,7 @@ import { ClerkResolver } from './resolver/clerk.resolver';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuardGuard } from './guards/login-guard.guard';
+import { ActivityComponent } from './activity/activity.component';
 
 const routes: Routes = [
   {
@@ -56,9 +57,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'profile',
+    path: 'profile/:userId',
     component: ProfileComponent,
     // resolve: { clerk: ClerkResolver },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'activity',
+    component: ActivityComponent,
     canActivate: [AuthGuard],
   },
 ];

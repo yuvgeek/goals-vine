@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Observable } from 'rxjs';
 import { AddGoal, Goal } from 'src/app/interfaces/goals';
+import { ActivitiesService } from 'src/app/services/activities.service';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { GoalsService } from 'src/app/services/goals.service';
 
@@ -58,7 +59,8 @@ export class GoalUpdateComponent implements OnInit {
     private fb: FormBuilder,
     private goalsService: GoalsService,
     private categoryService: CategoriesService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private activitiesService: ActivitiesService
   ) {}
 
   ngOnInit() {
@@ -77,14 +79,21 @@ export class GoalUpdateComponent implements OnInit {
 
   createGoal() {
     const formValues = this.goalForm.value as Goal;
-    this.goalsService
-      .addGoal({ ...formValues, user_id: window.Clerk.user?.id as string })
-      .subscribe((res) => {
-        this._snackBar.open('Goal created!', undefined, {
-          horizontalPosition: 'end',
-          verticalPosition: 'bottom',
-          duration: 3000,
-        });
+    const user_id = window.Clerk.user?.id as string;
+    this.goalsService.addGoal({ ...formValues, user_id }).subscribe((res) => {
+      this._snackBar.open('Goal created!', undefined, {
+        horizontalPosition: 'end',
+        verticalPosition: 'bottom',
+        duration: 3000,
       });
+      this.activitiesService
+        .addActivity({
+          user_id,
+          goal_id: res.data.inserted_hashes[0],
+          category_id: formValues.category_id,
+          action: 'created',
+        })
+        .subscribe();
+    });
   }
 }
