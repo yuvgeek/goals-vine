@@ -33,3 +33,8 @@ body {
 .text-decoration-underline {
   text-decoration: underline;
 }
+
+// fix to show the user button popup
+.cl-component.cl-user-button-popup {
+  z-index: 1000;
+}
