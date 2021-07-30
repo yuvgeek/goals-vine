@@ -60,8 +60,6 @@ export class GoalsComponent implements OnInit {
   }
 
   updateGoal(selectedGoal: Goal): void {
-    console.log(selectedGoal);
-
     this.dialog.open(GoalUpdateComponent, {
       data: {
         action: 'update',
@@ -95,7 +93,6 @@ export class GoalsComponent implements OnInit {
   updateGoalStatusOnDrop(prevIndex: number, data: Goal[], status: string) {
     const item = data[prevIndex];
     item.status = status;
-    console.log(item);
     this.goalsService
       .updateGoalStatus(window.Clerk.user?.id as string, item.id, status)
       .subscribe();

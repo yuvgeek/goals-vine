@@ -21,8 +21,5 @@ export class ProfileComponent implements OnInit {
     this.userInfo$ = this.userService.userInfoObs$.pipe(
       filter((data) => !!data)
     );
-
-    const { userId } = this.activatedRoute.snapshot.params;
-    console.log(userId);
   }
 }

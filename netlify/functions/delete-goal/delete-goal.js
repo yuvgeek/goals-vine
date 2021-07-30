@@ -17,14 +17,12 @@ const handler = async (req) => {
     "'";
 
   try {
-    console.log(queryDelete);
     const res = await client.query(queryDelete);
     return {
       statusCode: 200,
       body: JSON.stringify(res),
     };
   } catch (error) {
-    console.log(error);
 
     return { statusCode: 500, body: error.toString() };
   }

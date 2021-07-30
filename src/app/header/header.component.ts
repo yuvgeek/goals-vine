@@ -32,10 +32,7 @@ export class HeaderComponent implements AfterViewInit {
     this.userService.userInfoObs$
       .pipe(filter((res) => !!res))
       .subscribe((res) => {
-        console.log(res);
-
         const el = this.userActionContainer?.nativeElement as HTMLDivElement;
-
         window.Clerk.mountUserButton(el);
       });
   }

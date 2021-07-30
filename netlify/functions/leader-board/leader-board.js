@@ -1,11 +1,6 @@
 const { client } = require("../harperdb-connection");
 const axios = require("axios").default;
 
-function getInParallel(apiCalls) {
-  let functions = apiCalls.map((apiCall) => apiCall());
-  return Promise.all(functions).then((response) => response);
-}
-
 const handler = async (req) => {
   try {
     const options =
@@ -13,12 +8,10 @@ const handler = async (req) => {
 
     const res = await client.query(options);
     const promises = [];
-    // console.log("res", res);
     const isRecordExist = res.data?.find((el) => el.total > 0);
     if (isRecordExist) {
       for (let index = 0; index < res.data.length > 0; index++) {
         const element = res.data[index];
-        // console.log("e", element);
         const opt = {
           method: "GET",
           headers: {

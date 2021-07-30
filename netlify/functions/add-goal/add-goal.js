@@ -12,7 +12,6 @@ const handler = async (req) => {
       ...options,
       records: [{ ...JSON.parse(req.body) }],
     };
-    console.log(params);
     const res = await client.upsert(params);
     return {
       statusCode: 200,
