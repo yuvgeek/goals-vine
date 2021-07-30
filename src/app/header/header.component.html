@@ -1,17 +1,19 @@
-<mat-toolbar color="primary" class="mat-elevation-z6">
-  <!-- <img src="assets/logo.png"> -->
-  <span (click)="navigateToHome()" class="cursor-pointer">{{ appName }}</span>
-  <span class="spacer"></span>
-  <div id="userAction" class="userAction" #userAction></div>
+<div class="toolbar">
+  <mat-toolbar color="primary" class="mat-elevation-z6">
+    <!-- <img src="assets/logo.png"> -->
+    <span (click)="navigateToHome()" class="cursor-pointer">{{ appName }}</span>
+    <span class="spacer"></span>
+    <div id="userAction" class="userAction" #userAction></div>
 
-  <ng-container
-    *ngIf="userService.userInfoObs$ | async; else loginSignUpTemplate"
-  >
-    <button mat-button (click)="logout()">
-      <mat-icon class="mr-2">logout</mat-icon>LOGOUT
-    </button>
-  </ng-container>
-</mat-toolbar>
+    <ng-container
+      *ngIf="userService.userInfoObs$ | async; else loginSignUpTemplate"
+    >
+      <button mat-button (click)="logout()">
+        <mat-icon class="mr-2">logout</mat-icon>LOGOUT
+      </button>
+    </ng-container>
+  </mat-toolbar>
+</div>
 
 <ng-template #loginSignUpTemplate>
   <button mat-button routerLink="login">LOGIN</button>

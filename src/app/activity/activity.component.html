@@ -1,20 +1,22 @@
-<h2>Activities!</h2>
+<section class="p-3">
+  <h2>Activities!</h2>
 
-<div *ngIf="isLoading">
-  <mat-progress-bar mode="query"></mat-progress-bar>
-</div>
-
-<div *ngFor="let activity of activities$ | async" class="item d-flex">
-  <div class="item-icon d-flex">
-    <mat-icon>celebration</mat-icon>
+  <div *ngIf="isLoading">
+    <mat-progress-bar mode="query"></mat-progress-bar>
   </div>
-  <h2>
-    {{ activity.action | titlecase }} a goal
-    <span class="material-primary text-decoration-underline">{{
-      activity.goal_name
-    }}</span>
-    under
-    <span class="material-primary"> {{ activity.category_name }}</span>
-    category
-  </h2>
-</div>
+
+  <div *ngFor="let activity of activities$ | async" class="item d-flex">
+    <div class="item-icon d-flex">
+      <mat-icon>celebration</mat-icon>
+    </div>
+    <h2>
+      {{ activity.action | titlecase }} a goal
+      <span class="material-primary text-decoration-underline">{{
+        activity.goal_name
+      }}</span>
+      under
+      <span class="material-primary"> {{ activity.category_name }}</span>
+      category
+    </h2>
+  </div>
+</section>

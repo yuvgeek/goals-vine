@@ -26,6 +26,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import { ActivityComponent } from './activity/activity.component';
 import { MglTimelineModule } from 'angular-mgl-timeline';
 import { LeaderBoardComponent } from './leader-board/leader-board.component';
+import { FooterComponent } from './footer/footer.component';
 
 type Clerk = ClerkBase & {
   load: (opts: { navigate: (to: string) => Promise<unknown> }) => Promise<void>;
@@ -52,6 +53,7 @@ declare global {
     ProfileComponent,
     ActivityComponent,
     LeaderBoardComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

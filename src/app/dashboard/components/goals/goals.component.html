@@ -1,66 +1,72 @@
-<h2>Goals</h2>
-<p>The place where your goals will become reality!</p>
-<mat-divider *ngIf="!isLoading"></mat-divider>
-<div *ngIf="isLoading">
-  <mat-progress-bar mode="query"></mat-progress-bar>
-</div>
-<div class="mt-3 d-flex justify-content-around" cdkDropListGroup>
-  <ng-container *ngFor="let group of goals">
-    <div class="mt-2">
-      <div>
-        <h2>{{ group.key | snakeCase }}</h2>
+<section class="p-3">
+  <h2>Goals</h2>
+  <p>The place where your goals will become reality!</p>
+  <mat-divider *ngIf="!isLoading"></mat-divider>
+  <div *ngIf="isLoading">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+  </div>
+  <div class="mt-3 d-flex justify-content-around" cdkDropListGroup>
+    <ng-container *ngFor="let group of goals">
+      <div class="mt-2">
+        <div>
+          <h2>{{ group.key | snakeCase }}</h2>
 
-        <div
-          cdkDropList
-          [id]="group.key"
-          class="d-flex flex-column"
-          [cdkDropListData]="group.value"
-          cdkDropListSortingDisabled
-          (cdkDropListDropped)="drop($event, group.key)"
-        >
-          <ng-container *ngIf="group?.value?.length; else noItemTemplate">
-            <div
-              *ngFor="let item of group.value"
-              class="mb-4 mat-elevation-z6"
-              cdkDrag
-            >
-              <div class="goal-box" (click)="updateGoal(item)">
-                <h2 class="material-primary cursor-pointer">{{ item.name }}</h2>
-                <p class="mb-4">
-                  <span class="material-accent-">Category </span>:
-                  {{ item.category_name }}
-                </p>
-                <div class="d-flex justify-content-between">
-                  <div class="d-flex align-items-center">
-                    <mat-icon>visibility</mat-icon>
-                    <span class="ml-1">{{ item.visibility | titlecase }}</span>
-                  </div>
-                  <div class="d-flex align-items-center">
-                    <mat-icon>schedule</mat-icon>
-                    <span class="ml-1">{{ item.target | date }}</span>
+          <div
+            cdkDropList
+            [id]="group.key"
+            class="d-flex flex-column"
+            [cdkDropListData]="group.value"
+            cdkDropListSortingDisabled
+            (cdkDropListDropped)="drop($event, group.key)"
+          >
+            <ng-container *ngIf="group?.value?.length; else noItemTemplate">
+              <div
+                *ngFor="let item of group.value"
+                class="mb-4 mat-elevation-z6"
+                cdkDrag
+              >
+                <div class="goal-box" (click)="updateGoal(item)">
+                  <h2 class="material-primary cursor-pointer">
+                    {{ item.name }}
+                  </h2>
+                  <p class="mb-4">
+                    <span class="material-accent-">Category </span>:
+                    {{ item.category_name }}
+                  </p>
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <mat-icon>visibility</mat-icon>
+                      <span class="ml-1">{{
+                        item.visibility | titlecase
+                      }}</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <mat-icon>schedule</mat-icon>
+                      <span class="ml-1">{{ item.target | date }}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </ng-container>
+            </ng-container>
 
-          <ng-template #noItemTemplate>
-            <div
-              class="
-                goal-placeholder
-                d-flex
-                justify-content-center
-                align-items-center
-              "
-            >
-              No goal is available
-            </div>
-          </ng-template>
+            <ng-template #noItemTemplate>
+              <div
+                class="
+                  goal-placeholder
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                "
+              >
+                No goal is available
+              </div>
+            </ng-template>
+          </div>
         </div>
       </div>
-    </div>
-  </ng-container>
-</div>
+    </ng-container>
+  </div>
+</section>
 
 <button mat-fab class="md-fab-bottom-right" color="accent" (click)="addGoal()">
   <mat-icon>add</mat-icon>
