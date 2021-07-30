@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
     { label: 'Goals', route: 'goals', icon: 'flag' },
     { label: 'Categories', route: '/categories', icon: 'category' },
     { label: 'Account', route: '/account', icon: 'account_circle' },
+    { label: 'Leader board', route: '/leader-board', icon: 'leaderboard' },
     { label: 'Activity', route: 'activity', icon: 'feed' },
     // { label: 'Profile', route: '/profile', icon: 'person' }, - It is now in backlog. To be introduced later release
   ];

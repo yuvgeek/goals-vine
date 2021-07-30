@@ -1,5 +1,9 @@
 <h2>Activities!</h2>
 
+<div *ngIf="isLoading">
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
 <div *ngFor="let activity of activities$ | async" class="item d-flex">
   <div class="item-icon d-flex">
     <mat-icon>celebration</mat-icon>

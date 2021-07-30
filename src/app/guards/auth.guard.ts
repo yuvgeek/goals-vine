@@ -29,7 +29,6 @@ export class AuthGuard implements CanActivate {
         window.Clerk?.user ? of(true) : this.clerkResolver.resolve()
       ),
       tap(() => {
-        console.log(window.Clerk);
         if (!window?.Clerk?.user) {
           this.router.navigate(['login']);
         }

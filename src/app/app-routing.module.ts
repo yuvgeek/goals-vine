@@ -12,6 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuardGuard } from './guards/login-guard.guard';
 import { ActivityComponent } from './activity/activity.component';
+import { LeaderBoardComponent } from './leader-board/leader-board.component';
 
 const routes: Routes = [
   {
@@ -65,6 +66,11 @@ const routes: Routes = [
   {
     path: 'activity',
     component: ActivityComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'leader-board',
+    component: LeaderBoardComponent,
     canActivate: [AuthGuard],
   },
 ];

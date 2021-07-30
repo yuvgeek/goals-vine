@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { ActivityInView } from '../interfaces/activity';
 import { ActivitiesService } from '../services/activities.service';
 
@@ -15,11 +16,15 @@ export class ActivityComponent implements OnInit {
     ActivityInView[]
   >();
   name: string = '';
+  isLoading: boolean = true;
   ngOnInit(): void {
     const userId = window.Clerk.user?.id as string;
     this.name = window.Clerk.user?.fullName as string;
-
-    this.activities$ = this.activitiesService.getActivities(userId);
+    this.activities$ = this.activitiesService.getActivities(userId).pipe(
+      tap(() => {
+        this.isLoading = false;
+      })
+    );
   }
 
   onHeaderClick(event: any) {
