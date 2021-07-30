@@ -1,4 +1,4 @@
-<img src="src/assets/logo.png" width="300">
+<img src="src/assets/logo-in-blue.png" width="300">
 
 # Goals Vine
 <b>Goals Vine</b> is an app to transform your goals to reality.
